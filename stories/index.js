@@ -6,9 +6,9 @@ import Button from 'components/Button';
 import DayListItem from 'components/DayListItem';
 import DayList from 'components/DayList';
 import InterviewerListItem from 'components/InterviewerListItem';
+import InterviewerList from "components/InterviewerList";
 
 import 'index.scss';
-import InterviewerList from "components/InterviewerList";
 
 
 
@@ -90,7 +90,7 @@ storiesOf('InterviewerListItem', module)
   })
   .add('Unselected', () => <InterviewerListItem id={interviewer.id} name={interviewer.name} avatar={interviewer.avatar} />)
   .add('Selected', () => <InterviewerListItem id={interviewer.id} name={interviewer.name} avatar={interviewer.avatar} selected />)
-  .add('Clickable', () => <InterviewerListItem id={interviewer.id} name={interviewer.name} avatar={interviewer.avatar} setInterviewer={action('setInterviewer')} />);
+  .add('Clickable', () => <InterviewerListItem id={interviewer.id} name={interviewer.name} avatar={interviewer.avatar} setInterviewer={event => action('setInterviewer')(interviewer.id)} />);
 
 
 
