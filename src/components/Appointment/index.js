@@ -10,6 +10,7 @@ import Error from './Error';
 
 // import css
 import 'components/Appointment/styles.scss';
+import Form from './Form';
 
 export default function Appointment(props) {
   return (
@@ -20,6 +21,7 @@ export default function Appointment(props) {
       <Confirm message={props.message} onConfirm={props.onConfirm} onCancel={props.onCancel} />
       <Status message={props.message}/>
       <Error message={props.message} onClose={props.onClose} />
+      <Form name={props.name} interviewers={props.interviewers} interviewer={props.interviewer} onSave={props.onSave} onCancel={props.onCancel} />
     </article>
   );
 }
