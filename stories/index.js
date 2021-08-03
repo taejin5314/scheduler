@@ -1,15 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+
 import Button from 'components/Button';
 import DayListItem from 'components/DayListItem';
 import DayList from 'components/DayList';
 import InterviewerListItem from 'components/InterviewerListItem';
 import InterviewerList from "components/InterviewerList";
 import Appointment from 'components/Appointment';
-
-import 'index.scss';
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
@@ -18,7 +17,7 @@ import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
 
-
+import 'index.scss';
 
 
 // Button
@@ -135,6 +134,22 @@ storiesOf('Appointment', module)
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
   .add("Appointment", () => <Appointment />)
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="12pm" />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
+  .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment 
+        id={1}
+        time="12pm"
+        interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
   .add("Header", () => <Header time="12pm" />)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
   .add("Show", () => <Show student="Lydia Miller-Jones" interviewer="Sylvia Palmer" onEdit={action("onEdit")} onDelete={action("onDelete")} />)
