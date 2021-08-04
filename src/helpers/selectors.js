@@ -11,3 +11,12 @@ export function getAppointmentsForDay(state, day) {
   });
   return filteredAppointment;
 }
+export function getInterview(state, interview) {
+  if (interview) {
+    return {
+      ...interview,
+      interviewer: state.interviewers[interview.interviewer]
+    }
+  }
+  return null;
+}
