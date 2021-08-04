@@ -22,6 +22,15 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  const save = (name, interviewer) => {
+    const interview = {
+      student: name,
+      interviewer
+    }
+
+    props.bookInterview(interviewer, interview)
+  }
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -32,7 +41,7 @@ export default function Appointment(props) {
         <Show student={props.interview.student} interviewer={props.interview.interviewer.name} onEdit={props.onEdit} onDelete={props.onDelete}/>
       }
       {mode === CREATE &&
-        <Form name={props.name} interviewers={[]} interviewer={props.interviewer} onSave={props.onSave} onCancel={() => back()} />
+        <Form name={props.name} interviewers={props.interviewers} interviewer={props.interviewer} onSave={save} onCancel={() => back()} />
       }
       {/* <Confirm message={props.message} onConfirm={props.onConfirm} onCancel={props.onCancel} />
       <Status message={props.message}/>

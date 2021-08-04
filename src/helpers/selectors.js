@@ -21,19 +21,11 @@ export function getInterview(state, interview) {
   return null;
 }
 export function getInterviewersForDay(state, day) {
-  const filteredInterviewer = [];
-  let interviewerID;
+  let filteredInterviewer = [];
 
   state.days.map(elm => {
     if (elm.name === day) {
-      for (const appointment of elm.appointments) {
-        if (state.appointments[appointment].interview) {
-          interviewerID = state.appointments[appointment].interview.interviewer;
-        }
-        if (interviewerID && !filteredInterviewer.includes(interviewerID)) {
-          filteredInterviewer.push(interviewerID);
-        }
-      }
+      filteredInterviewer = elm.interviewers;
     }
   })
   return filteredInterviewer.map((id) => state.interviewers[id]);
