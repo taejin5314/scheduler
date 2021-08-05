@@ -7,6 +7,7 @@ import {
   useReducer
 } from "react";
 
+const REACT_APP_WEBSOCKET_URL = process.env.REACT_APP_WEBSOCKET_URL;
 const SET_DAY = "SET_DAY";
 const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 const SET_APPOINTMENT = "SET_APPOINTMENT";
@@ -82,6 +83,14 @@ export default function useApplicationData() {
     ]).then((all) => {
       dispatch({ type: SET_APPLICATION_DATA, all})
     })
+
+    const webSocket = new WebSocket(REACT_APP_WEBSOCKET_URL, "protocolOne");
+    webSocket.onopen = function (event) {
+      webSocket.send("ping");
+    }
+    webSocket.onmessage = function (event) {
+      console.log(event.data);
+    }
   }, []);
 
   // set the day to the day in the database
