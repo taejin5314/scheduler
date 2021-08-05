@@ -7,25 +7,6 @@ import {
   useState
 } from "react";
 
-const SET_DAY = "SET_DAY";
-const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
-const SET_INTERVIEW = "SET_INTERVIEW";
-
-function reducer(state, action) {
-  switch (action.type) {
-    case SET_DAY:
-      return {}
-      case SET_APPLICATION_DATA:
-        return {}
-        case SET_INTERVIEW:
-          return {}
-          default:
-            throw new Error(
-              `Tried to reduce with unsupported action type: ${action.type}`
-            );
-  }
-}
-
 export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
