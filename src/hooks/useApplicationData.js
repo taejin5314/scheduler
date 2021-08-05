@@ -31,11 +31,13 @@ export default function useApplicationData() {
     })
   }, []);
 
+  // set the day to the day in the database
   const setDay = (day) => setState({
     ...state,
     day
   });
 
+  // update spot function
   const updateSpots = () => {
     setState(prev => {
       const appointmentsForDay = getAppointmentsForDay(prev, prev.day);
