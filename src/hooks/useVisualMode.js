@@ -3,26 +3,35 @@ import {
 } from "react";
 
 export function useVisualMode(initial) {
-  const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
   function transition(update, replace = false) {
-    if (replace) {
-      history.pop();
-    }
-    history.push(update);
-    setHistory(history);
-    return setMode(update);
+
+    setHistory(prev => {
+      const newHistory = [...prev];
+
+      if (replace) {
+        newHistory.pop();
+      }
+
+      newHistory.push(update);
+      return newHistory;
+    });
   }
 
   function back() {
-    if (history.length > 1) {
-      history.pop();
-      setHistory(history);
+    if (history.length < 2) {
+      return;
     }
-    return setMode(history[history.length - 1]);
+
+    setHistory(prev => {
+      const newHistory = [...prev];
+      newHistory.pop();
+      return newHistory;
+    });
   }
 
+  const mode = history[history.length - 1];
   return {
     mode,
     transition,

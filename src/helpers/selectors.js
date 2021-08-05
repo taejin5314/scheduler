@@ -1,6 +1,6 @@
 export function getAppointmentsForDay(state, day) {
   const filteredAppointment = [];
-  state.days.map(elm => {
+  state.days.forEach(elm => {
     if (elm.name === day) {
       for (const appointment in state.appointments) {
         if (elm.appointments.includes(Number(appointment))) {
@@ -23,7 +23,7 @@ export function getInterview(state, interview) {
 export function getInterviewersForDay(state, day) {
   let filteredInterviewer = [];
 
-  state.days.map(elm => {
+  state.days.forEach(elm => {
     if (elm.name === day) {
       filteredInterviewer = elm.interviewers;
     }
