@@ -16,6 +16,7 @@ import 'components/Appointment/styles.scss';
 export default function Appointment(props) {
 
   const { id, time, interview, interviewers, bookInterview, cancelInterview } = props;
+
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -53,12 +54,12 @@ export default function Appointment(props) {
 
   useEffect(() => {
     if (interview && mode === EMPTY) {
-     transition(SHOW);
+      transition(SHOW);
     }
     if (interview === null && mode === SHOW) {
-     transition(EMPTY);
+      transition(EMPTY);
     }
-   }, [interview, transition, mode]);
+  }, [interview, transition, mode]);
 
   return (
     <article className="appointment">
@@ -67,7 +68,7 @@ export default function Appointment(props) {
         <Empty onAdd={() => transition(CREATE)} />
       }
       {mode === SHOW && interview && 
-        <Show student={interview.student} interviewer={interview.interviewer ? interview.interviewer.name : null} onEdit={() => transition(EDIT)} onDelete={() => transition(DELETE_CONFIRM)}/>
+        <Show student={interview.student} interviewer={interview.interviewer && interview.interviewer.name} onEdit={() => transition(EDIT)} onDelete={() => transition(DELETE_CONFIRM)}/>
       }
       {mode === CREATE &&
         <Form interviewers={interviewers} onSave={save} onCancel={() => back()} />

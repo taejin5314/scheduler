@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-  getAppointmentsForDay
+  getAppointmentsForDay, getDayOfAppointment
 } from "helpers/selectors";
 import {
   useEffect,
@@ -12,6 +12,7 @@ const SET_DAY = "SET_DAY";
 const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 const SET_APPOINTMENT = "SET_APPOINTMENT";
 const SET_SPOTS = "SET_SPOTS";
+const SET_INTERVIEW = "SET_INTERVIEW";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -34,11 +35,12 @@ function reducer(state, action) {
     // set the empty spot of the day
     case SET_SPOTS:
       // find current day
-      const currentDay = action.day || state.day;
+      const currentDay = getDayOfAppointment(state, action.id) || state.day;
+      console.log(currentDay);
       // find the appointments of the day
       const appointmentsForDay = getAppointmentsForDay(state, currentDay);
       // count the empty spot of the day
-      const emptyAppointments = appointmentsForDay.filter(appointment => !appointment.interview).length;
+      const emptyAppointments = appointmentsForDay.filter(appointment => !appointment.interview || JSON.stringify(appointment.interview) === JSON.stringify({})).length;
       // update the empty spots to the state
       const updatedState = {...state};
 
@@ -58,6 +60,26 @@ function reducer(state, action) {
         appointments: action.appointments
       }
 
+    // Listen for the SET_INTERVIEW message from server.
+    case SET_INTERVIEW:
+      const appointment = {
+        ...state.appointments[action.id],
+        interview: {
+          ...action.interview
+        }
+      };
+  
+      const appointments = {
+        ...state.appointments,
+        [action.id]: appointment
+      };
+
+      const newState = {
+        ...state,
+        appointments: appointments
+      }
+
+      return newState;
     // if there is no proper action, show the error message
     default:
       throw new Error(
@@ -75,6 +97,14 @@ export default function useApplicationData() {
     interviewers: [],
   })
 
+  // set the day to the day in the database
+  const setDay = (day) => dispatch({ type: SET_DAY, day});
+
+  // update spot function
+  const updateSpots = (id) => {
+    dispatch({ type: SET_SPOTS, id })
+  }
+
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -83,23 +113,20 @@ export default function useApplicationData() {
     ]).then((all) => {
       dispatch({ type: SET_APPLICATION_DATA, all})
     })
-
+    
     const webSocket = new WebSocket(REACT_APP_WEBSOCKET_URL, "protocolOne");
-    webSocket.onopen = function (event) {
-      webSocket.send("ping");
-    }
     webSocket.onmessage = function (event) {
-      console.log(event.data);
+      const parsedData = JSON.parse(event.data);
+      console.log(parsedData);
+      if (parsedData.type === SET_INTERVIEW) {
+        dispatch(parsedData);
+        updateSpots(parsedData.id);
+      }
     }
   }, []);
+  
 
-  // set the day to the day in the database
-  const setDay = (day) => dispatch({ type: SET_DAY, day});
-
-  // update spot function
-  const updateSpots = (id, day) => {
-    dispatch({ type: SET_SPOTS, id, day})
-  }
+  
 
   // create an appointment function
   const bookInterview = (id, interview) => {
@@ -118,7 +145,7 @@ export default function useApplicationData() {
     dispatch({ type: SET_APPOINTMENT, appointments });
 
     return axios.put(`/api/appointments/${id}`, appointment)
-      .then(updateSpots(id, state.day));
+      .then(() => updateSpots());
   }
 
   // delete an appointment function
@@ -136,13 +163,13 @@ export default function useApplicationData() {
     dispatch({ type: SET_APPOINTMENT, appointments });
 
     return axios.delete(`/api/appointments/${id}`)
-      .then(updateSpots(id, state.day));
+      .then(() => updateSpots());
   }
 
   return {
     state,
     setDay,
     bookInterview,
-    cancelInterview
+    cancelInterview,
   }
 }
