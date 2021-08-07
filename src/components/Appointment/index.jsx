@@ -31,6 +31,7 @@ export default function Appointment(props) {
     interview ? SHOW : EMPTY
   );
 
+  // save function - book an interview and transition to saving status
   const save = (name, interviewer) => {
     const interview = {
       student: name,
@@ -44,6 +45,7 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true));
   }
 
+  // destroy function - delete an interview and transition to deleting status
   const destroy = () => {
     transition(DELETING, true);
 
