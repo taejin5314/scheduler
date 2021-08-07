@@ -1,7 +1,9 @@
 export function getAppointmentsForDay(state, day) {
   const filteredAppointment = [];
+  // filter the state which has the same day with argument
   const appointmentIDs = state.days.filter(eachDay => eachDay.name === day);
 
+  // if there is no appointment
   if (appointmentIDs.length === 0) {
     return [];
   }
@@ -12,6 +14,7 @@ export function getAppointmentsForDay(state, day) {
   return filteredAppointment;
 }
 export function getInterview(state, interview) {
+  // check if there is an interview or not
   if (interview && JSON.stringify(interview) !== JSON.stringify({})) {
     return {
       ...interview,
