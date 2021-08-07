@@ -22,8 +22,10 @@ export default function Application(props) {
     cancelInterview,
   } = useApplicationData();
 
+  // get an interviewers array by using helper function(selectors.js)
   const interviewers = getInterviewersForDay(state, state.day);
   
+  // get an appointments array by using helper function(selectors.js)
   const appointments = getAppointmentsForDay(state, state.day).map(
     appointment => {
       return (
