@@ -114,8 +114,10 @@ export default function useApplicationData() {
       dispatch({ type: SET_APPLICATION_DATA, all})
     })
     
+    // craete websocket from the server
     const webSocket = new WebSocket(REACT_APP_WEBSOCKET_URL, "protocolOne");
     webSocket.onmessage = function (event) {
+      // parse the event data from server
       const parsedData = JSON.parse(event.data);
       console.log(parsedData);
       if (parsedData.type === SET_INTERVIEW) {
@@ -124,9 +126,6 @@ export default function useApplicationData() {
       }
     }
   }, []);
-  
-
-  
 
   // create an appointment function
   const bookInterview = (id, interview) => {
