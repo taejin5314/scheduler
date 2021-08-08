@@ -15,6 +15,7 @@ import Appointment from './Appointment';
 
 
 export default function Application(props) {
+  // import functions from custom hooks
   const {
     state,
     setDay,
