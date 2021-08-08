@@ -17,6 +17,7 @@ export default function Appointment(props) {
 
   const { id, time, interview, interviewers, bookInterview, cancelInterview } = props;
 
+  // variables for transition state
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
