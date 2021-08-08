@@ -7,6 +7,7 @@ import {
   useReducer
 } from "react";
 
+// Set constants variables
 const REACT_APP_WEBSOCKET_URL = process.env.REACT_APP_WEBSOCKET_URL;
 const SET_DAY = "SET_DAY";
 const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
