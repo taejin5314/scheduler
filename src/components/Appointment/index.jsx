@@ -55,10 +55,13 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_DELETE, true));
   }
 
+  // when the action occured from the server (websocket)
   useEffect(() => {
+    // if the interview is created, but not rendered
     if (interview && mode === EMPTY) {
       transition(SHOW);
     }
+    // if the interview is deleted, but still showing
     if (interview === null && mode === SHOW) {
       transition(EMPTY);
     }
