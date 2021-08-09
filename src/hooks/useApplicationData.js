@@ -104,7 +104,7 @@ export default function useApplicationData() {
     });
 
     // craete websocket from the server
-    // const webSocket = new WebSocket(REACT_APP_WEBSOCKET_URL, "protocolOne");
+    // const webSocket = new WebSocket(REACT_APP_WEBSOCKET_URL, 'protocolOne');
     const webSocket = new WebSocket('ws://localhost:8001', 'protocolOne');
 
     webSocket.onmessage = function (event) {
