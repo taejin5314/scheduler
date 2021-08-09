@@ -1,13 +1,10 @@
-import {
-  useState
-} from "react";
+import { useState } from 'react';
 
 export function useVisualMode(initial) {
   const [history, setHistory] = useState([initial]);
 
   function transition(update, replace = false) {
-
-    setHistory(prev => {
+    setHistory((prev) => {
       const newHistory = [...prev];
 
       if (replace) {
@@ -24,7 +21,7 @@ export function useVisualMode(initial) {
       return;
     }
 
-    setHistory(prev => {
+    setHistory((prev) => {
       const newHistory = [...prev];
       newHistory.pop();
       return newHistory;
