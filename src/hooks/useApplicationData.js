@@ -32,7 +32,6 @@ function reducer(state, action) {
     case SET_SPOTS:
       // find current day
       const currentDay = getDayOfAppointment(state, action.id) || state.day;
-      console.log(currentDay);
       // find the appointments of the day
       const appointmentsForDay = getAppointmentsForDay(state, currentDay);
       // count the empty spot of the day

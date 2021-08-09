@@ -1,4 +1,4 @@
-// PLEASE IGNORE THIS FILE 
+// PLEASE IGNORE THIS FILE
 // THIS IS THE BACK-UP FOR useApplicationData custom hooks.
 
 // import axios from "axios";

@@ -13,35 +13,27 @@ import 'components/Application.scss';
 import DayList from './DayList';
 import Appointment from './Appointment';
 
-
 export default function Application(props) {
   // import functions from custom hooks
-  const {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview,
-  } = useApplicationData();
+  const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
 
   // get an interviewers array by using helper function(selectors.js)
   const interviewers = getInterviewersForDay(state, state.day);
-  
+
   // get an appointments array by using helper function(selectors.js)
-  const appointments = getAppointmentsForDay(state, state.day).map(
-    appointment => {
-      return (
-        <Appointment
-          key={appointment.id}
-          id={appointment.id}
-          time={appointment.time}
-          interview={getInterview(state, appointment.interview)}
-          interviewers={interviewers}
-          bookInterview={bookInterview}
-          cancelInterview={cancelInterview}
-        />
-      );
-    }
-  );
+  const appointments = getAppointmentsForDay(state, state.day).map((appointment) => {
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={getInterview(state, appointment.interview)}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
+      />
+    );
+  });
 
   return (
     <main className="layout">
@@ -55,7 +47,7 @@ export default function Application(props) {
         </nav>
         <img className="sidebar__lhl sidebar--centered" src="images/lhl.png" alt="Lighthouse Labs" />
       </section>
-  
+
       <section className="schedule">
         {appointments}
         <Appointment key="last" time="5pm" />
