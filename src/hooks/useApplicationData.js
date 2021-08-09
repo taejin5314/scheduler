@@ -3,7 +3,7 @@ import { getAppointmentsForDay, getDayOfAppointment } from 'helpers/selectors';
 import { useEffect, useReducer } from 'react';
 
 // Set constants variables
-const REACT_APP_WEBSOCKET_URL = process.env.REACT_APP_WEBSOCKET_URL;
+const REACT_APP_WEBSOCKET_URL = process.env.REACT_APP_WEBSOCKET_URL || 'ws://localhost:8001';
 const SET_DAY = 'SET_DAY';
 const SET_APPLICATION_DATA = 'SET_APPLICATION_DATA';
 const SET_APPOINTMENT = 'SET_APPOINTMENT';
@@ -103,8 +103,7 @@ export default function useApplicationData() {
     });
 
     // craete websocket from the server
-    // const webSocket = new WebSocket(REACT_APP_WEBSOCKET_URL, 'protocolOne');
-    const webSocket = new WebSocket('ws://localhost:8001', 'protocolOne');
+    const webSocket = new WebSocket(REACT_APP_WEBSOCKET_URL, 'protocolOne');
 
     webSocket.onmessage = function (event) {
       // parse the event data from server
