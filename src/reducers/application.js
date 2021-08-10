@@ -1,3 +1,4 @@
+// import selector function
 const { getDayOfAppointment, getAppointmentsForDay } = require('helpers/selectors');
 
 // Set constants variables
