@@ -130,9 +130,10 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    dispatch({ type: SET_APPOINTMENT, appointments });
-
-    return axios.put(`/api/appointments/${id}`, appointment).then(() => updateSpots());
+    return axios
+      .put(`/api/appointments/${id}`, appointment)
+      .then(() => dispatch({ type: SET_APPOINTMENT, appointments }))
+      .then(() => updateSpots());
   };
 
   // delete an appointment function
@@ -147,9 +148,10 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    dispatch({ type: SET_APPOINTMENT, appointments });
-
-    return axios.delete(`/api/appointments/${id}`).then(() => updateSpots());
+    return axios
+      .delete(`/api/appointments/${id}`)
+      .then(() => dispatch({ type: SET_APPOINTMENT, appointments }))
+      .then(() => updateSpots());
   };
 
   return {
