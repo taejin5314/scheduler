@@ -1,7 +1,7 @@
 const { getDayOfAppointment, getAppointmentsForDay } = require('helpers/selectors');
 
 // Set constants variables
-// const SET_DAY = 'SET_DAY';
+const SET_DAY = 'SET_DAY';
 const SET_APPLICATION_DATA = 'SET_APPLICATION_DATA';
 const SET_APPOINTMENT = 'SET_APPOINTMENT';
 const SET_SPOTS = 'SET_SPOTS';
