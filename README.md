@@ -11,6 +11,50 @@ Interview Scheduler is a modern client application using the React view library.
 
 ## Final Product
 
+### Home page
+
+!["home page"](https://github.com/taejin5314/scheduler/blob/master/docs/home.png)
+
+### Switching Days
+
+!["switching days"](https://github.com/taejin5314/scheduler/blob/master/docs/switch-days.gif)
+
+### Add Appointment
+
+!["add appointment"](https://github.com/taejin5314/scheduler/blob/master/docs/add-appointment.gif)
+
+### Edit Appointment
+
+!["edit appintment"](https://github.com/taejin5314/scheduler/blob/master/docs/edit-appointment.gif)
+
+### Delete Appointment
+
+!["delete appointment"](https://github.com/taejin5314/scheduler/blob/master/docs/delete-appointment.gif)
+
+### Add Error
+
+!["add error"](https://github.com/taejin5314/scheduler/blob/master/docs/add-error.gif)
+
+### Delete Error
+
+!["delete error"](https://github.com/taejin5314/scheduler/blob/master/docs/delete-error.gif)
+
+### Websocket
+
+!["websocket"](https://github.com/taejin5314/scheduler/blob/master/docs/websocket.gif)
+
+### Storybook
+
+!["storybook"](https://github.com/taejin5314/scheduler/blob/master/docs/storybook.gif)
+
+### Cypress
+
+!["cypress"](https://github.com/taejin5314/scheduler/blob/master/docs/cypress.gif)
+
+### Jest Coverage
+
+!["jest coverage"](https://github.com/taejin5314/scheduler/blob/master/docs/jest-coverage.png)
+
 ## Getting Started
 
 1. Install dependencies with `npm install`.
