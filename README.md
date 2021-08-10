@@ -26,9 +26,11 @@ npm run storybook
 
 ## Getting Started
 
+1. Install dependencies with `npm install`
+
 -**IMPORTANT**-
 
-- The app needs to be run alongside with scheduler-api(https://github.com/taejin5314/scheduler-api) in order to receive data from axios requests.
+- The app needs to be run alongside with [scheduler-api](https://github.com/taejin5314/scheduler-api) in order to receive data from axios requests.
 
 ## Dependencies
 
@@ -43,9 +45,9 @@ npm run storybook
 
 ## Deployed Client
 
-- Link: https://trusting-brattain-cd73c9.netlify.app/
+- Application link: Powered by [Netlify](https://trusting-brattain-cd73c9.netlify.app/)
 
 ## Deployed Server
 
-- Days api: https://scheduler-taejin5314.herokuapp.com/api/days
-- Appointments api: https://scheduler-taejin5314.herokuapp.com/api/appointments
+- Days api: Powered by [Heroku](https://scheduler-taejin5314.herokuapp.com/api/days)
+- Appointments api: Powered by [Heroku](https://scheduler-taejin5314.herokuapp.com/api/appointments)
