@@ -184,7 +184,5 @@ describe('Application', () => {
 
     // 10. Check that the appointment is displayed again
     expect(getByText(appointment, 'Archie Cohen')).toBeInTheDocument();
-
-    debug();
   });
 });
