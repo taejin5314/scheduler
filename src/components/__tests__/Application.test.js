@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from '__mocks__/axios';
 
-import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, wait } from '@testing-library/react';
+import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText } from '@testing-library/react';
 
 import Application from 'components/Application';
 
@@ -155,7 +155,7 @@ describe('Application', () => {
     axios.delete.mockRejectedValueOnce();
 
     // 1. Render the Application.
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, 'Archie Cohen'));
