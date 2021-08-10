@@ -2,35 +2,45 @@
 
 Interview Scheduler is a modern client application using the React view library.
 
-## Setup
+## Project Funtionality
 
-Install dependencies with `npm install`.
+- Development focuses on a single page application (SPA) called Interview Scheduler, built using React.
+- Data is persisted by the API server using a PostgreSQL database.
+- The client application communicates with an API server over HTTP, using the JSON format.
+- Jest tests are used through the development of the project.
 
-## Running Webpack Development Server
-
-```sh
-npm start
-```
-
-## Running Jest Test Framework
-
-```sh
-npm test
-```
-
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+## Final Product
 
 ## Getting Started
 
-1. Install dependencies with `npm install`
+1. Install dependencies with `npm install`.
+2. Running Webpack Development Server by `npm start`.
+3. The App will served at http://localhost:8000/
 
--**IMPORTANT**-
+> **-IMPORTANT-**
 
 - The app needs to be run alongside with [scheduler-api](https://github.com/taejin5314/scheduler-api) in order to receive data from axios requests.
+
+## Jest
+
+- Running Jest Test Framework with `npm test`.
+
+## Storybook
+
+- Running Storybook Visual Testbed with `npm run storybook`.
+
+## Languages, Frameworks
+
+**Scheduler**
+
+- JSX, CSS, Javascript
+- ReactJS, Cypress, Jest, Storybook, Axios
+
+**Scheduler-api**
+
+- Javascript
+- NodeJS, Express
+- PostgreSQL
 
 ## Dependencies
 
